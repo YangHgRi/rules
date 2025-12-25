@@ -287,6 +287,46 @@ const baseRules = [
   `MATCH,${PROXY_GROUPS.SELECT}`,
 ];
 
+// [二次修改] 自定义路由规则集合
+const routeRules = {
+  direct: {
+    type: "http",
+    behavior: "domain",
+    format: "text",
+    url: "https://raw.githubusercontent.com/YangHgRi/rules/main/direct.yml",
+    path: "./ruleset/direct.yml",
+  },
+  proxy: {
+    type: "http",
+    behavior: "domain",
+    format: "text",
+    url: "https://raw.githubusercontent.com/YangHgRi/rules/main/proxy.yml",
+    path: "./ruleset/proxy.yml",
+  },
+};
+
+// [二次修改] 自定义路由配置
+const routingConfig = {
+  "domain-strategy": "as-is",
+  rules: [
+    "RULE-SET,direct,DIRECT",
+    "RULE-SET,proxy,PROXY",
+  ],
+};
+
+// [二次修改] 动态为国家代码创建路由规则
+const countryCodes = ["hk", "jp", "kr", "tw", "uk", "us"];
+countryCodes.forEach(code => {
+  routeRules[code] = {
+    type: "http",
+    behavior: "domain",
+    format: "text",
+    url: `https://raw.githubusercontent.com/YangHgRi/rules/main/${code}.yml`,
+    path: `./ruleset/${code}.yml`,
+  };
+  routingConfig.rules.push(`RULE-SET,${code},PROXY`);
+});
+
 function buildRules({ quicEnabled }) {
   const ruleList = [...baseRules];
   if (!quicEnabled) {
@@ -775,8 +815,9 @@ function main(config) {
 
   Object.assign(resultConfig, {
     "proxy-groups": proxyGroups,
-    "rule-providers": ruleProviders,
+    "rule-providers": { ...ruleProviders, ...routeRules },
     rules: finalRules,
+    routing: routingConfig,
     sniffer: snifferConfig,
     dns: fakeIPEnabled ? dnsConfigFakeIp : dnsConfig,
     "geodata-mode": true,
