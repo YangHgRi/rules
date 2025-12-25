@@ -164,14 +164,6 @@ const ruleProviders = {
         "url": "https://adrules.top/adrules-mihomo.mrs",
         "path": "./ruleset/ADBlock.mrs"
     },
-    "SogouInput": {
-        "type": "http",
-        "behavior": "classical",
-        "format": "text",
-        "interval": 86400,
-        "url": "https://ruleset.skk.moe/Clash/non_ip/sogouinput.txt",
-        "path": "./ruleset/SogouInput.txt"
-    },
     "StaticResources": {
         "type": "http",
         "behavior": "domain",
@@ -249,7 +241,6 @@ const ruleProviders = {
 const baseRules = [
     `RULE-SET,ADBlock,广告拦截`,
     `RULE-SET,AdditionalFilter,广告拦截`,
-    `RULE-SET,SogouInput,搜狗输入法`,
     `DOMAIN-SUFFIX,truthsocial.com,Truth Social`,
     `RULE-SET,StaticResources,静态资源`,
     `RULE-SET,CDNResources,静态资源`,
@@ -660,14 +651,6 @@ function buildProxyGroups({
             "icon": "https://gcore.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Server.png",
             "type": "select",
             "proxies": defaultProxies
-        },
-        {
-            "name": "搜狗输入法",
-            "icon": "https://gcore.jsdelivr.net/gh/powerfullz/override-rules@master/icons/Sougou.png",
-            "type": "select",
-            "proxies": [
-                PROXY_GROUPS.DIRECT, "REJECT"
-            ]
         },
         {
             "name": PROXY_GROUPS.DIRECT,
