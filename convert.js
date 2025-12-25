@@ -717,15 +717,17 @@ function main(config) {
   const routeRules = {
     direct: {
       type: "http",
-      behavior: "domain",
-      format: "text",
+      behavior: "classical",
+      format: "yaml",
+      interval: 86400,
       url: "https://raw.githubusercontent.com/YangHgRi/rules/main/direct.yml",
       path: "./ruleset/direct.yml",
     },
     proxy: {
       type: "http",
-      behavior: "domain",
-      format: "text",
+      behavior: "classical",
+      format: "yaml",
+      interval: 86400,
       url: "https://raw.githubusercontent.com/YangHgRi/rules/main/proxy.yml",
       path: "./ruleset/proxy.yml",
     },
@@ -784,8 +786,9 @@ function main(config) {
   Object.entries(countryCodes).forEach(([code, countryName]) => {
     routeRules[code] = {
       type: "http",
-      behavior: "domain",
+      behavior: "classical",
       format: "yaml",
+      interval: 86400,
       url: `https://raw.githubusercontent.com/YangHgRi/rules/main/${code}.yml`,
       path: `./ruleset/${code}.yml`,
     };
