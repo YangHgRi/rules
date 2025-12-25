@@ -287,46 +287,6 @@ const baseRules = [
   `MATCH,${PROXY_GROUPS.SELECT}`,
 ];
 
-// [二次修改] 自定义路由规则集合
-const routeRules = {
-  direct: {
-    type: "http",
-    behavior: "domain",
-    format: "text",
-    url: "https://raw.githubusercontent.com/YangHgRi/rules/main/direct.yml",
-    path: "./ruleset/direct.yml",
-  },
-  proxy: {
-    type: "http",
-    behavior: "domain",
-    format: "text",
-    url: "https://raw.githubusercontent.com/YangHgRi/rules/main/proxy.yml",
-    path: "./ruleset/proxy.yml",
-  },
-};
-
-// [二次修改] 自定义路由配置
-const routingConfig = {
-  "domain-strategy": "as-is",
-  rules: [
-    "RULE-SET,direct,DIRECT",
-    "RULE-SET,proxy,PROXY",
-  ],
-};
-
-// [二次修改] 动态为国家代码创建路由规则
-const countryCodes = ["hk", "jp", "kr", "tw", "uk", "us"];
-countryCodes.forEach(code => {
-  routeRules[code] = {
-    type: "http",
-    behavior: "domain",
-    format: "text",
-    url: `https://raw.githubusercontent.com/YangHgRi/rules/main/${code}.yml`,
-    path: `./ruleset/${code}.yml`,
-  };
-  routingConfig.rules.push(`RULE-SET,${code},PROXY`);
-});
-
 function buildRules({ quicEnabled }) {
   const ruleList = [...baseRules];
   if (!quicEnabled) {
@@ -752,6 +712,59 @@ function main(config) {
   const lowCost = hasLowCost(resultConfig);
   const countryGroupNames = getCountryGroupNames(countryInfo, countryThreshold);
   const countries = stripNodeSuffix(countryGroupNames);
+
+  // [二次修改] 自定义路由规则集合
+  const routeRules = {
+    direct: {
+      type: "http",
+      behavior: "domain",
+      format: "text",
+      url: "https://raw.githubusercontent.com/YangHgRi/rules/main/direct.yml",
+      path: "./ruleset/direct.yml",
+    },
+    proxy: {
+      type: "http",
+      behavior: "domain",
+      format: "text",
+      url: "https://raw.githubusercontent.com/YangHgRi/rules/main/proxy.yml",
+      path: "./ruleset/proxy.yml",
+    },
+  };
+
+  // [二次修改] 自定义路由配置
+  const routingConfig = {
+    "domain-strategy": "as-is",
+    rules: [
+      `RULE-SET,direct,${PROXY_GROUPS.DIRECT}`,
+      `RULE-SET,proxy,${PROXY_GROUPS.SELECT}`,
+    ],
+  };
+
+  // [二次修改] 动态为国家代码创建路由规则
+  const countryCodes = {
+    hk: "香港",
+    jp: "日本",
+    kr: "韩国",
+    tw: "台湾",
+    uk: "英国",
+    us: "美国",
+  };
+
+  Object.entries(countryCodes).forEach(([code, countryName]) => {
+    routeRules[code] = {
+      type: "http",
+      behavior: "domain",
+      format: "text",
+      url: `https://raw.githubusercontent.com/YangHgRi/rules/main/${code}.yml`,
+      path: `./ruleset/${code}.yml`,
+    };
+
+    // 检查是否存在对应的国家分组，如果存在则使用，否则使用通用的选择代理组
+    const targetGroup = countries.includes(countryName)
+      ? `${countryName}${NODE_SUFFIX}`
+      : PROXY_GROUPS.SELECT;
+    routingConfig.rules.push(`RULE-SET,${code},${targetGroup}`);
+  });
 
   // 构建基础数组
   const {
