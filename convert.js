@@ -60,9 +60,16 @@ function buildFeatureFlags(args) {
     };
 
     const flags = Object.entries(spec).reduce((acc, [sourceKey, targetKey]) => {
+        // 默认值全部为 false
         acc[targetKey] = parseBool(args[sourceKey]) || false;
         return acc;
     }, {});
+
+    // [二次修改] 覆盖部分参数的默认值, 仅在用户未提供相应参数时生效
+    if (typeof args.loadbalance === 'undefined') flags.loadBalance = true; // 上游: false
+    if (typeof args.ipv6 === 'undefined') flags.ipv6Enabled = true;     // 上游: false
+    if (typeof args.keepalive === 'undefined') flags.keepAliveEnabled = true; // 上游: false
+    if (typeof args.fakeip === 'undefined') flags.fakeIPEnabled = true;     // 上游: false
 
     // 单独处理数字参数
     flags.countryThreshold = parseNumber(args.threshold, 0);
