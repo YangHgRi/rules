@@ -785,7 +785,7 @@ function main(config) {
     routeRules[code] = {
       type: "http",
       behavior: "domain",
-      format: "text",
+      format: "yaml",
       url: `https://raw.githubusercontent.com/YangHgRi/rules/main/${code}.yml`,
       path: `./ruleset/${code}.yml`,
     };
