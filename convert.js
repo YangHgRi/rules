@@ -731,41 +731,6 @@ function main(config) {
     },
   };
 
-  // [二次修改] 自定义路由配置
-  const routingConfig = {
-    "domain-strategy": "as-is",
-    rules: [
-      `RULE-SET,direct,${PROXY_GROUPS.DIRECT}`,
-      `RULE-SET,proxy,${PROXY_GROUPS.SELECT}`,
-    ],
-  };
-
-  // [二次修改] 动态为国家代码创建路由规则
-  const countryCodes = {
-    hk: "香港",
-    jp: "日本",
-    kr: "韩国",
-    tw: "台湾",
-    uk: "英国",
-    us: "美国",
-  };
-
-  Object.entries(countryCodes).forEach(([code, countryName]) => {
-    routeRules[code] = {
-      type: "http",
-      behavior: "domain",
-      format: "text",
-      url: `https://raw.githubusercontent.com/YangHgRi/rules/main/${code}.yml`,
-      path: `./ruleset/${code}.yml`,
-    };
-
-    // 检查是否存在对应的国家分组，如果存在则使用，否则使用通用的选择代理组
-    const targetGroup = countries.includes(countryName)
-      ? `${countryName}${NODE_SUFFIX}`
-      : PROXY_GROUPS.SELECT;
-    routingConfig.rules.push(`RULE-SET,${code},${targetGroup}`);
-  });
-
   // 构建基础数组
   const {
     defaultProxies,
@@ -805,6 +770,39 @@ function main(config) {
 
   const finalRules = buildRules({ quicEnabled });
 
+  // [二次修改] 将自定义路由规则添加到主规则列表的最前面
+  const customRouteRules = [];
+  const countryCodes = {
+    hk: "香港",
+    jp: "日本",
+    kr: "韩国",
+    tw: "台湾",
+    uk: "英国",
+    us: "美国",
+  };
+
+  Object.entries(countryCodes).forEach(([code, countryName]) => {
+    routeRules[code] = {
+      type: "http",
+      behavior: "domain",
+      format: "text",
+      url: `https://raw.githubusercontent.com/YangHgRi/rules/main/${code}.yml`,
+      path: `./ruleset/${code}.yml`,
+    };
+
+    const targetGroup = countries.includes(countryName)
+      ? `${countryName}${NODE_SUFFIX}`
+      : PROXY_GROUPS.SELECT;
+    customRouteRules.push(`RULE-SET,${code},${targetGroup}`);
+  });
+
+  // 添加 direct 和 proxy 规则
+  customRouteRules.unshift(`RULE-SET,proxy,${PROXY_GROUPS.SELECT}`);
+  customRouteRules.unshift(`RULE-SET,direct,${PROXY_GROUPS.DIRECT}`);
+
+  // 将自定义规则添加到 finalRules 的最前面
+  finalRules.unshift(...customRouteRules);
+
   if (fullConfig)
     Object.assign(resultConfig, {
       "mixed-port": 7890,
@@ -830,7 +828,6 @@ function main(config) {
     "proxy-groups": proxyGroups,
     "rule-providers": { ...ruleProviders, ...routeRules },
     rules: finalRules,
-    routing: routingConfig,
     sniffer: snifferConfig,
     dns: fakeIPEnabled ? dnsConfigFakeIp : dnsConfig,
     "geodata-mode": true,
