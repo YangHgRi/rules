@@ -1,6 +1,7 @@
 /*
 二次修改: YangHgRi
 仓库: https://github.com/YangHgRi/rules
+文件: https://github.com/YangHgRi/rules/blob/main/convert.js
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
