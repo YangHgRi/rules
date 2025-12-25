@@ -1,7 +1,7 @@
 /*
 二次修改: YangHgRi
 仓库: https://github.com/YangHgRi/rules
-文件: https://github.com/YangHgRi/rules/blob/main/convert.js
+文件: https://raw.githubusercontent.com/YangHgRi/rules/main/convert.js
 
 支持的传入参数：
 - loadbalance: 启用负载均衡（url-test/load-balance，默认 true）
