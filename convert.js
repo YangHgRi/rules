@@ -77,7 +77,7 @@ function buildFeatureFlags(args) {
 
   // [二次修改] 覆盖部分参数的默认值, 仅在用户未提供相应参数时生效
   if (typeof args.loadbalance === "undefined") flags.loadBalance = true; // 上游: false
-  if (typeof args.ipv6 === "undefined") flags.ipv6Enabled = true; // 上游: false
+  // if (typeof args.ipv6 === "undefined") flags.ipv6Enabled = true; // 上游: false
   if (typeof args.keepalive === "undefined") flags.keepAliveEnabled = true; // 上游: false
   if (typeof args.fakeip === "undefined") flags.fakeIPEnabled = true; // 上游: false
 
