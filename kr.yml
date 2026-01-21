@@ -1,3 +1,2 @@
 payload:
-  - DOMAIN-KEYWORD,binance
-  - DOMAIN-KEYWORD,okx
+  - DOMAIN-SUFFIX,mofa.go.kr

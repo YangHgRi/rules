@@ -1,0 +1,9 @@
+payload:
+  - DOMAIN-KEYWORD,stun
+  - DOMAIN-SUFFIX,chime.aws
+  - DOMAIN-SUFFIX,slack-edge.com
+  - DOMAIN-SUFFIX,t-msedge.net
+  - DOMAIN-SUFFIX,discord.media
+  - DOMAIN-SUFFIX,stun.services.mozilla.com
+  - DOMAIN-SUFFIX,stun.voip.blackberry.com
+  - DOMAIN,stun.l.google.com
