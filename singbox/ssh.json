@@ -2,7 +2,7 @@
   "version": 2,
   "rules": [
     {
-      "port": 3306
+      "port": 22
     },
     {
       "domain": ["ssh.github.com"]

@@ -1,3 +1,3 @@
 payload:
   - DOMAIN,ssh.github.com
-  - DST-PORT,3306
+  - DST-PORT,22
