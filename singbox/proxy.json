@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "mailntouedutw-my.sharepoint.com",
+        "dl.google.com",
+        "upd.kaspersky.com",
+        "omobi.cc",
+        "googleapis.cn"
+      ]
+    }
+  ]
+}

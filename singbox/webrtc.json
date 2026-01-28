@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain": ["stun.l.google.com"]
+    },
+    {
+      "domain_suffix": [
+        "chime.aws",
+        "slack-edge.com",
+        "t-msedge.net",
+        "discord.media",
+        "stun.services.mozilla.com",
+        "stun.voip.blackberry.com"
+      ]
+    },
+    {
+      "domain_keyword": ["stun"]
+    }
+  ]
+}

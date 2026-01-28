@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "mgstage.com",
+        "getchu.com",
+        "dmm.co.jp",
+        "dlsite.com",
+        "dlsite.jp"
+      ]
+    },
+    {
+      "domain_keyword": ["prestige"]
+    }
+  ]
+}

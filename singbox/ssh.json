@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "port": 3306
+    },
+    {
+      "domain": ["ssh.github.com"]
+    }
+  ]
+}

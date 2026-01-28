@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "instagram.com",
+        "cdninstagram.com",
+        "facebook.com",
+        "paradoxinteractive.com",
+        "paradoxwikis.com",
+        "x.com",
+        "twitter.com",
+        "twimg.com",
+        "twimg.org",
+        "twimg.co",
+        "ads-twitter.com",
+        "t.co",
+        "twittr.com"
+      ]
+    }
+  ]
+}
