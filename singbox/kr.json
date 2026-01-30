@@ -3,6 +3,9 @@
   "rules": [
     {
       "domain_suffix": ["mofa.go.kr"]
+    },
+    {
+      "domain_suffix": ["okx.com"]
     }
   ]
 }
