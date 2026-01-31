@@ -2,7 +2,10 @@
   "version": 2,
   "rules": [
     {
-      "process_path": ["E:\\syncthing\\syncthing.exe"]
+      "process_path": [
+        "E:\\syncthing\\syncthing.exe",
+        "E:\\qBittorrent\\qbittorrent.exe"
+      ]
     }
   ]
 }
