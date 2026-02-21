@@ -2,10 +2,7 @@
   "version": 2,
   "rules": [
     {
-      "domain_suffix": ["mofa.go.kr"]
-    },
-    {
-      "domain_suffix": ["okx.com"]
+      "domain_suffix": ["mofa.go.kr", "nyam.pe.kr", "okx.com"]
     }
   ]
 }
