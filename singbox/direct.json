@@ -2,6 +2,9 @@
   "version": 2,
   "rules": [
     {
+      "domain_suffix": ["zdjl.site"]
+    },
+    {
       "process_path": [
         "E:\\syncthing\\syncthing.exe",
         "E:\\qBittorrent\\qbittorrent.exe"
