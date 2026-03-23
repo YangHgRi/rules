@@ -7,7 +7,8 @@
     {
       "process_path": [
         "E:\\syncthing\\syncthing.exe",
-        "E:\\qBittorrent\\qbittorrent.exe"
+        "E:\\qBittorrent\\qbittorrent.exe",
+        "F:\\Battle.net\\Battle.net.exe"
       ]
     }
   ]
