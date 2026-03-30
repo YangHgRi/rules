@@ -5,7 +5,7 @@
       "domain_suffix": ["usa.gov"]
     },
     {
-      "domain_keyword": ["javdb"]
+      "domain_keyword": ["javdb", "jdbstatic"]
     }
   ]
 }
