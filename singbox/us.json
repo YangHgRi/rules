@@ -3,6 +3,9 @@
   "rules": [
     {
       "domain_suffix": ["usa.gov"]
+    },
+    {
+      "domain_keyword": ["javdb"]
     }
   ]
 }
