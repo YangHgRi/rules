@@ -1,6 +1,6 @@
 payload:
   - DOMAIN-SUFFIX,mailntouedutw-my.sharepoint.com
-  - DOMAIN,dl.google.com
+  - DOMAIN-SUFFIX,dl.google.com
   - DOMAIN-SUFFIX,googleapis.cn
   - DOMAIN-SUFFIX,upd.kaspersky.com
   - DOMAIN-SUFFIX,omobi.cc

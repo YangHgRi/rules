@@ -1,2 +1,8 @@
 payload:
+  - DOMAIN-SUFFIX,zdjl.site
   - PROCESS-PATH,E:\syncthing\syncthing.exe
+  - PROCESS-PATH,E:\qBittorrent\qbittorrent.exe
+  - PROCESS-PATH,F:\Battle.net\Battle.net.exe
+  - PROCESS-PATH,F:\Overwatch\Overwatch Launcher.exe
+  - PROCESS-PATH,F:\Overwatch\_retail_\OWNeacClient.exe
+  - PROCESS-PATH,F:\Overwatch\_retail_\Overwatch.exe
