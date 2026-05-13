@@ -1,3 +1,5 @@
+// https://github.com/Sakyvo/sing-mix/blob/main/sing-mix_origin
+
 // ====================
 // 0. 特殊域名处理(手动添加)
 // ====================
