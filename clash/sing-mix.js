@@ -807,7 +807,7 @@ const applyTun = (cfg) => {
     stack: "system",
     "auto-route": true,
     "auto-detect-interface": true,
-    "strict-route": true,
+    "strict-route": false,
     "dns-hijack": ["any:53", "tcp://any:53"],
   };
 };
