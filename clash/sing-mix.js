@@ -293,6 +293,7 @@ const RULE_PROVIDERS = {
   SukkaW_cdn_domain: {
     type: "http",
     behavior: "domain",
+    format: "text",
     url: "https://ruleset.skk.moe/Clash/domainset/cdn.txt",
     path: "./rulesets/sukkaw_cdn_domain.txt",
     interval: 86400,
@@ -300,6 +301,7 @@ const RULE_PROVIDERS = {
   SukkaW_cdn_nonip: {
     type: "http",
     behavior: "classical",
+    format: "text",
     url: "https://ruleset.skk.moe/Clash/non_ip/cdn.txt",
     path: "./rulesets/sukkaw_cdn_nonip.txt",
     interval: 86400,
