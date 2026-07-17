@@ -5,13 +5,7 @@
       "domain_suffix": ["zdjl.site"]
     },
     {
-      "process_path": [
-        "E:\\syncthing\\syncthing.exe",
-        "F:\\Battle.net\\Battle.net.exe",
-        "F:\\Overwatch\\Overwatch Launcher.exe",
-        "F:\\Overwatch\\_retail_\\OWNeacClient.exe",
-        "F:\\Overwatch\\_retail_\\Overwatch.exe"
-      ]
+      "domain": ["host-omp-gateway"]
     }
   ]
 }
