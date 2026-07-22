@@ -5,7 +5,7 @@
       "domain_suffix": ["zdjl.site"]
     },
     {
-      "domain": ["host-omp-gateway"]
+      "domain": ["host-omp-gateway", "api.inferera.com"]
     }
   ]
 }
