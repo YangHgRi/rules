@@ -1,8 +1,4 @@
 {
   "version": 2,
-  "rules": [
-    {
-      "domain_suffix": ["sms-activate.io", "okx.com"]
-    }
-  ]
+  "rules": [{}]
 }
