@@ -2,7 +2,7 @@
   "version": 2,
   "rules": [
     {
-      "domain_suffix": ["zdjl.site"]
+      "domain_suffix": ["zdjl.site", "reeden.app"]
     },
     {
       "domain": ["host-omp-gateway", "api.inferera.com"]
